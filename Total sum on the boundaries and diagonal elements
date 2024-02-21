@@ -1,0 +1,30 @@
+int totalSum(int input[][501], int n)
+{
+    //Write your code here
+    int sum = 0;
+    
+    //finding sum for upper and bottom rows
+    for(int i=0; i<n; i++) {
+        sum += input[0][i];
+        sum += input[n-1][i];
+    }
+
+    //finding sum for first and last column
+    for(int i=1; i<n-1; i++) {
+        sum += input[i][0];
+        sum += input[i][n-1];
+    }
+
+    //finding sum for left and right diagonal
+    for (int i = 1; i < n - 1; i++) {
+        sum += input[i][i];
+        sum += input[i][n-1-i];
+    }
+
+    //This condition will execute if n is odd
+    if(n%2 != 0) {
+        sum -= input[n/2][n/2];
+    }
+
+    return sum;
+}
